@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 
-export default function UserDetailDisplay() {
+export default function UserDetailDisplay({ left, right }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.left}>email</Text>
-      <Text style={styles.right}>atuny0@sohu.com</Text>
+      <Text style={styles.left}>{left}</Text>
+      <Text style={styles.right}>{right}</Text>
     </View>
   )
 }

@@ -2,20 +2,17 @@ import { StatusBar } from 'expo-status-bar'
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 
 export default function Comments({ comments }) {
-  console.log(comments)
   return (
-    <FlatList
-      data={comments}
-      keyExtractor={(comment) => comment.id}
-      renderItem={(comment) => {
+    <View>
+      {comments.map((comment, index) => {
         return (
-          <View style={styles.comment}>
-            <Text style={styles.username}>{comment.item.user.username}</Text>
-            <Text style={styles.body}>{comment.item.body}</Text>
+          <View key={index} style={styles.comment}>
+            <Text style={styles.username}>{comment.user.username}</Text>
+            <Text style={styles.body}>{comment.body}</Text>
           </View>
         )
-      }}
-    />
+      })}
+    </View>
   )
 }
 

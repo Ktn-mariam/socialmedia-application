@@ -1,7 +1,6 @@
 // Implement a details screen that shows the comments and details related to the post (on clicking on any post)
 // Allow users to create new posts and comments
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import Comments from '../components/Comments'
 import { useEffect, useState } from 'react'
 import Tags from '../components/Tags'
@@ -37,7 +36,7 @@ export default function PostDetailScreen({ route }) {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.post}>
         <Text style={styles.title}>{post.title}</Text>
         <Text style={styles.body}>{post.body}</Text>
@@ -47,15 +46,11 @@ export default function PostDetailScreen({ route }) {
         <Text style={styles.commentTitle}>Comments</Text>
         <Comments comments={comments.comments} />
       </View>
-      <StatusBar style="dark" />
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   post: {
     backgroundColor: '#DFE0E2',
     padding: 40,
@@ -80,5 +75,19 @@ const styles = StyleSheet.create({
     fontSize: 22,
     marginBottom: 10,
     fontWeight: '400',
+  },
+
+  addPost: {
+    alignItems: 'center',
+    paddingVertical: 10,
+    backgroundColor: '#071013',
+    borderRadius: 10,
+    marginHorizontal: 10,
+    marginVertical: 10,
+  },
+
+  addPostText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 })

@@ -1,13 +1,16 @@
 // Login screen for basic authorization (token authentication)
 import { useState } from 'react'
-import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import LoginButton from '../components/buttons/LoginButton'
+import { useDispatch } from 'react-redux'
+import { addToken } from '../redux/auth'
 
 export default function LoginScreen() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [inValidLogin, setInValidLogin] = useState(false)
+
+  const dispatch = useDispatch()
 
   const loginHandler = async () => {
     const data = await fetch('https://dummyjson.com/auth/login', {
@@ -23,6 +26,7 @@ export default function LoginScreen() {
       setInValidLogin(true)
       return
     }
+    dispatch(addToken({ token: data }))
   }
 
   return (
@@ -53,7 +57,6 @@ export default function LoginScreen() {
         </Text>
       )}
       <LoginButton onPress={loginHandler}>Login</LoginButton>
-      <StatusBar style="auto" />
     </View>
   )
 }

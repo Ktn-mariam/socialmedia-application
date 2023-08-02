@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 
-export default function UserProfilePicture() {
+export default function UserProfilePicture({ name, image }) {
   return (
     <View style={styles.profilePicContainer}>
       <Image
         style={styles.profilePic}
         source={{
-          uri: 'https://robohash.org/hicveldicta.png?size=50x50&set=set1',
+          uri: image,
         }}
       />
-      <Text style={styles.name}>Terry Medhurst</Text>
+      <Text style={styles.name}>{name}</Text>
     </View>
   )
 }

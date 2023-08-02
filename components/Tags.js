@@ -4,8 +4,8 @@ import { StyleSheet, Text, View } from 'react-native'
 export default function Tags({ tags }) {
   return (
     <View style={styles.container}>
-      {tags.map((tag) => {
-        return <Text style={styles.tag}>{`#${tag}`}</Text>
+      {tags.map((tag, index) => {
+        return <Text key={index} style={styles.tag}>{`#${tag}`}</Text>
       })}
     </View>
   )
@@ -13,7 +13,6 @@ export default function Tags({ tags }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
