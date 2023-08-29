@@ -1,2 +1,2 @@
 # socialmedia-application
-React Native assignment
+React Native social media application
